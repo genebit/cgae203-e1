@@ -5,6 +5,7 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
+using System.Diagnostics;
 
 namespace Platformer.Mechanics
 {
@@ -14,6 +15,9 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
+        public GameObject[] bulletPrefabs;
+        public Transform firePoint;
+
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
@@ -56,6 +60,7 @@ namespace Platformer.Mechanics
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
+
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                     jumpState = JumpState.PrepareToJump;
                 else if (Input.GetButtonUp("Jump"))
@@ -70,6 +75,11 @@ namespace Platformer.Mechanics
             }
             UpdateJumpState();
             base.Update();
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                ShootBullet();
+            }
         }
 
         void UpdateJumpState()
@@ -101,6 +111,24 @@ namespace Platformer.Mechanics
                     break;
             }
         }
+
+        int x = 0;
+
+        void ShootBullet()
+        {
+            GameObject bullet = Instantiate(bulletPrefabs[x], firePoint.position, firePoint.rotation);
+
+            // Access the BulletController script and set its speed
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+            bulletController.speed = 10f;
+
+            if (x == 2)
+                x = 0;
+            else 
+                x += 1;
+
+        }
+
 
         protected override void ComputeVelocity()
         {
