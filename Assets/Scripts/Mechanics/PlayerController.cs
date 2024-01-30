@@ -17,6 +17,7 @@ namespace Platformer.Mechanics
     {
         public GameObject[] bulletPrefabs;
         public Transform firePoint;
+        private int currentBulletPrefabIndex = 0;
 
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
@@ -112,21 +113,10 @@ namespace Platformer.Mechanics
             }
         }
 
-        int x = 0;
-
         void ShootBullet()
         {
-            GameObject bullet = Instantiate(bulletPrefabs[x], firePoint.position, firePoint.rotation);
-
-            // Access the BulletController script and set its speed
-            BulletController bulletController = bullet.GetComponent<BulletController>();
-            bulletController.speed = 10f;
-
-            if (x == 2)
-                x = 0;
-            else 
-                x += 1;
-
+            Instantiate(bulletPrefabs[currentBulletPrefabIndex], firePoint.position, firePoint.rotation);
+            currentBulletPrefabIndex = (currentBulletPrefabIndex + 1) % bulletPrefabs.Length;
         }
 
 
