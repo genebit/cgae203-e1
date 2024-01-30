@@ -17,7 +17,6 @@ namespace Platformer.Mechanics
     {
         public GameObject[] bulletPrefabs;
         public Transform firePoint;
-        private int currentBulletPrefabIndex = 0;
 
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
@@ -77,10 +76,9 @@ namespace Platformer.Mechanics
             UpdateJumpState();
             base.Update();
 
-            if (Input.GetButtonDown("Fire1"))
-            {
-                ShootBullet();
-            }
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Alpha1)) ShootBullet(0);
+            if (Input.GetKeyDown(KeyCode.Alpha2)) ShootBullet(1);
+            if (Input.GetKeyDown(KeyCode.Alpha3)) ShootBullet(2);
         }
 
         void UpdateJumpState()
@@ -113,10 +111,9 @@ namespace Platformer.Mechanics
             }
         }
 
-        void ShootBullet()
+        void ShootBullet(int prefabIndex)
         {
-            Instantiate(bulletPrefabs[currentBulletPrefabIndex], firePoint.position, firePoint.rotation);
-            currentBulletPrefabIndex = (currentBulletPrefabIndex + 1) % bulletPrefabs.Length;
+            Instantiate(bulletPrefabs[prefabIndex], firePoint.position, firePoint.rotation);
         }
 
 

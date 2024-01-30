@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8368781830583559275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2434039947230314448}
@@ -76,8 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 3a0362e4a5920f5438b2140d9653d25b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0440f865f7a6dfc49a38f8369d977f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aa2b2f3c558944f8d4fe1e6a04b135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
 --- !u!61 &-8745594799317692664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +117,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.97, y: 2.66}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,13 +145,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 6361
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.1555028
+      value: 0.15550144
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -162,12 +181,12 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.3875575
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.2704438
+      value: 0.51837444
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -182,7 +201,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
-      value: -1.5625132
+      value: -4.123223
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -202,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
-      value: -1.5625132
+      value: -4.123223
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -222,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outWeight
-      value: 0.334643
+      value: 0.5081347
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}

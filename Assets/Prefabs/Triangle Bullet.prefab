@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8368781830583559275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3341655787022769371}
@@ -76,8 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: ed194fb8eba5fde45992c3f33210ad0c,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1bf4e2cf90377341939f7e1d9a27d95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aa2b2f3c558944f8d4fe1e6a04b135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!60 &5384860766387388024
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -117,8 +116,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.03, y: 4.93}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,13 +147,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 6361
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.1555028
+      value: 0.15550144
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -164,12 +183,12 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.3875575
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.2704438
+      value: 0.51837444
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -184,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
-      value: -1.5625132
+      value: -4.123223
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -204,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
-      value: -1.5625132
+      value: -4.123223
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
@@ -224,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outWeight
-      value: 0.334643
+      value: 0.5081347
       objectReference: {fileID: 0}
     - target: {fileID: 8332795017894267649, guid: 66a23a41bc72040c580ec1ae0a348142,
         type: 3}
