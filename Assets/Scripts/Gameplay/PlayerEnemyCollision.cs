@@ -46,7 +46,8 @@ namespace Platformer.Gameplay
             }
             else
             {
-                Schedule<PlayerDeath>();
+                player.health.Decrement();
+                player.animator.SetTrigger("hurt");
             }
         }
     }

@@ -14,6 +14,7 @@ namespace Platformer.Mechanics
     {
         public PatrolPath path;
         public AudioClip ouch;
+        public ParticleSystem deathParticleSystem;
 
         internal PatrolPath.Mover mover;
         internal AnimationController control;

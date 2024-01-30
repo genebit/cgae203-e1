@@ -1,38 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+using Platformer.Gameplay;
+using Platformer.Mechanics;
 using UnityEngine;
+using static Platformer.Core.Simulation;
 
 public class BulletController : MonoBehaviour
 {
-    public GameObject player;
+    [Range(0f, 20f)]
+    public float speed = 10;
 
-    private SpriteRenderer playerSR;
-    public float speed = 10f;
+    private GameObject player;
+    private SpriteRenderer playerSpriteRenderer;
+    private Vector2 initialBulletDirection;
 
-    void Start()
+    private void Start()
     {
-        player = GameObject.Find("Player");
-        playerSR = player.GetComponent<SpriteRenderer>();
+        player = GameObject.FindWithTag("Player");
+        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+
+        // Set the initial bullet direction based on the player facing dir.
+        initialBulletDirection = playerSpriteRenderer.flipX ? Vector2.left : Vector2.right;
     }
 
-    void Update()
+    private void Update()
     {
         // Move the bullet horizontally
-        transform.Translate(((playerSR.flipX) ? Vector2.left : Vector2.right) * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * initialBulletDirection);
 
         // Destroy the bullet if it goes off-screen
-        if (!GetComponent<Renderer>().isVisible)
-        {
+        if (!IsVisible())
             Destroy(gameObject);
-        }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private bool IsVisible()
     {
+        // Check if any renderer of the object is visible from any camera
+        return GetComponent<Renderer>().isVisible;
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            EnemyDeath enemyDeathEvent = Schedule<EnemyDeath>();
+            enemyDeathEvent.enemy = collision.gameObject.GetComponent<EnemyController>();
+
+            // Destroy the collided object after a 1s delay
+            Destroy(collision.gameObject, 1f);
+
             Destroy(gameObject);
         }
     }
