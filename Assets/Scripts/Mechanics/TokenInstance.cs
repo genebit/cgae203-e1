@@ -1,4 +1,6 @@
+using System;
 using Platformer.Gameplay;
+using TMPro;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -19,6 +21,8 @@ namespace Platformer.Mechanics
         [Tooltip("List of frames that make up the animation.")]
         public Sprite[] idleAnimation, collectedAnimation;
 
+        public TextMeshProUGUI scoreText;
+
         internal Sprite[] sprites = new Sprite[0];
 
         internal SpriteRenderer _renderer;
@@ -34,7 +38,7 @@ namespace Platformer.Mechanics
         {
             _renderer = GetComponent<SpriteRenderer>();
             if (randomAnimationStartTime)
-                frame = Random.Range(0, sprites.Length);
+                frame = UnityEngine.Random.Range(0, sprites.Length);
             sprites = idleAnimation;
         }
 
@@ -57,6 +61,8 @@ namespace Platformer.Mechanics
             var ev = Schedule<PlayerTokenCollision>();
             ev.token = this;
             ev.player = player;
+
+            scoreText.text = (Int32.Parse(scoreText.text) + 100).ToString();
         }
     }
 }
