@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5031754047868676410}
   - component: {fileID: 5917352911531655731}
   - component: {fileID: -8745594799317692664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Licorice Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0440f865f7a6dfc49a38f8369d977f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -307,6 +307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SubtleTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267679, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a23a41bc72040c580ec1ae0a348142, type: 3}

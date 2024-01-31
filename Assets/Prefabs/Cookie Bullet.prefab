@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5031754047868676410}
   - component: {fileID: 309349868647129065}
   - component: {fileID: -5838922015308808201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cookie Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 12516f4fd32142842a00f2eeb91a05f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -322,6 +322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SubtleTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332795017894267679, guid: 66a23a41bc72040c580ec1ae0a348142,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a23a41bc72040c580ec1ae0a348142, type: 3}
