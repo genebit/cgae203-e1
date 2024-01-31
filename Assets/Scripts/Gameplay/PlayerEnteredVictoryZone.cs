@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -17,8 +19,8 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            model.player.animator.SetTrigger("victory");
             model.player.controlEnabled = false;
+            model.player.GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 }
