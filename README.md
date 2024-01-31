@@ -12,7 +12,7 @@ Contains the initial game for learning unity on CGAE203
 
 ## Development 💻
 
-1. Make sure to install Unity Hub and Unity Editor version: `2021.3.32f1`
+1. Make sure to install Unity Hub and Unity Editor version: [2021.3.32f1](https://unity.com/releases/editor/whats-new/2021.3.32)
 2. Pick your code editor of choice e.g. `Visual Studio Community` or `Visual Studio Code`
 3. For coding, load the `.sln` file into VS Community and load its dependencies
 4. Run the Unity project in Unity Hub
