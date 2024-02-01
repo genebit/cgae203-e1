@@ -48,6 +48,7 @@ namespace Platformer.Gameplay
             {
                 player.health.Decrement();
                 player.animator.SetTrigger("hurt");
+                model.virtualCamera.GetComponent<CameraShake>().TriggerShake();
             }
         }
     }
