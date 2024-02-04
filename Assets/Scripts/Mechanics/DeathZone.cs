@@ -21,5 +21,5 @@ namespace Platformer.Mechanics
                 ev.deathzone = this;
             }
         }
-    }
+}
 }
