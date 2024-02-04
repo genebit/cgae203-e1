@@ -11,14 +11,17 @@ public class BulletController : MonoBehaviour
     private GameObject player;
     private SpriteRenderer playerSpriteRenderer;
     private Vector2 initialBulletDirection;
+    internal SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Set the initial bullet direction based on the player facing dir.
         initialBulletDirection = playerSpriteRenderer.flipX ? Vector2.left : Vector2.right;
+        spriteRenderer.flipX = playerSpriteRenderer.flipX;
     }
 
     private void Update()
