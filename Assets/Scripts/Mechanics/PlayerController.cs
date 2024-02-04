@@ -11,35 +11,40 @@ namespace Platformer.Mechanics
 {
     public class PlayerController : KinematicObject
     {
-        public GameObject[] bulletPrefabs;
+        #region Inspector View
+        [Header("Skills")]
+        public GameObject bulletPrefab;
+        public GameObject windBreathPrefab;
         public Transform firePoint;
+
         public ParticleSystem jumpParticle;
 
+        [Header("Audio Clips")]
         public AudioClip jumpAudio;
         public AudioClip landedAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
+        [Header("Speed")]
+        [Range(1, 10f)]
         public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
+        [Range(1, 10f)]
         public float jumpTakeOffSpeed = 7;
 
+        [Header("Controls")]
         public JumpState jumpState = JumpState.Grounded;
+        public bool controlEnabled = true;
+        #endregion
+
         private bool stopJump;
         internal BoxCollider2D collider2d;
         internal AudioSource audioSource;
         internal Health health;
-        public bool controlEnabled = true;
-
+        internal Animator animator;
+        
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
-        internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
@@ -75,9 +80,7 @@ namespace Platformer.Mechanics
             UpdateJumpState();
             base.Update();
 
-            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Alpha1)) ShootBullet(0);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) ShootBullet(1);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) ShootBullet(2);
+            Schedule<PlayerSkill>().player = this;
         }
 
         void UpdateJumpState()
@@ -113,13 +116,6 @@ namespace Platformer.Mechanics
                     break;
             }
         }
-
-        void ShootBullet(int prefabIndex)
-        {
-            Instantiate(bulletPrefabs[prefabIndex], firePoint.position, firePoint.rotation);
-            animator.SetTrigger("attack");
-        }
-
 
         protected override void ComputeVelocity()
         {

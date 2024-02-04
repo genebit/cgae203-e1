@@ -105,11 +105,12 @@ MonoBehaviour:
   minGroundNormalY: 0
   gravityModifier: 1
   velocity: {x: 0, y: 0}
-  bulletPrefabs:
-  - {fileID: 8368781830583559275, guid: 5ef45562cac0e774aa34898bf894e187, type: 3}
-  - {fileID: 8368781830583559275, guid: 399024d44709f634498ca7643ce111b0, type: 3}
-  - {fileID: 8368781830583559275, guid: bd9f4289f1c82d44690eda5be46c9ddf, type: 3}
+  bulletPrefab: {fileID: 8368781830583559275, guid: 5ef45562cac0e774aa34898bf894e187,
+    type: 3}
+  windBreathPrefab: {fileID: 3800103849696755161, guid: 791ee82161c7c124aa3230e4446a6498,
+    type: 3}
   firePoint: {fileID: 0}
+  jumpParticle: {fileID: 0}
   jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
   landedAudio: {fileID: 8300000, guid: dd6057fd464f77942a0bf39c54651b32, type: 3}
   respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
