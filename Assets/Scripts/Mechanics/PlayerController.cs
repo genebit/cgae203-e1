@@ -9,16 +9,14 @@ using System.Diagnostics;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is the main class used to implement control of the player.
-    /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
-    /// </summary>
     public class PlayerController : KinematicObject
     {
         public GameObject[] bulletPrefabs;
         public Transform firePoint;
+        public ParticleSystem jumpParticle;
 
         public AudioClip jumpAudio;
+        public AudioClip landedAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
@@ -33,9 +31,9 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
-        public Health health;
+        internal BoxCollider2D collider2d;
+        internal AudioSource audioSource;
+        internal Health health;
         public bool controlEnabled = true;
 
         bool jump;
@@ -50,7 +48,7 @@ namespace Platformer.Mechanics
         {
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
-            collider2d = GetComponent<Collider2D>();
+            collider2d = GetComponent<BoxCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
         }
@@ -73,6 +71,7 @@ namespace Platformer.Mechanics
             {
                 move.x = 0;
             }
+
             UpdateJumpState();
             base.Update();
 
@@ -90,6 +89,8 @@ namespace Platformer.Mechanics
                     jumpState = JumpState.Jumping;
                     jump = true;
                     stopJump = false;
+
+                    jumpParticle.Play();
                     break;
                 case JumpState.Jumping:
                     if (!IsGrounded)
@@ -107,6 +108,8 @@ namespace Platformer.Mechanics
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
+
+                    jumpParticle.Play();
                     break;
             }
         }
@@ -130,14 +133,20 @@ namespace Platformer.Mechanics
                 stopJump = false;
                 if (velocity.y > 0)
                 {
-                    velocity.y = velocity.y * model.jumpDeceleration;
+                    velocity.y *= model.jumpDeceleration;
                 }
             }
 
             if (move.x > 0.01f)
+            {
                 spriteRenderer.flipX = false;
+                jumpParticle.Play();
+            }
             else if (move.x < -0.01f)
+            {
                 spriteRenderer.flipX = true;
+                jumpParticle.Play();
+            }
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
