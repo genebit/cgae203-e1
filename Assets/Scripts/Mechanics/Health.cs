@@ -2,6 +2,7 @@ using System;
 using Platformer.Gameplay;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
@@ -17,6 +18,7 @@ namespace Platformer.Mechanics
         [Range(0, 5)]
         public int maxHP = 3;
         public TextMeshProUGUI healthText;
+        public Slider healthSlider;
         public ParticleSystem deathParticleSystem;
         /// <summary>
         /// Indicates if the entity should be considered 'alive'.
@@ -33,6 +35,11 @@ namespace Platformer.Mechanics
             currentHP = Mathf.Clamp(currentHP + 1, 0, maxHP);
 
             SetHealthToText();
+        }
+
+        private void Update()
+        {
+            healthSlider.value = currentHP;
         }
 
         /// <summary>
