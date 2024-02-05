@@ -2,6 +2,7 @@ using System;
 using Platformer.Gameplay;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Platformer.Core.Simulation;
 
 
@@ -22,6 +23,7 @@ namespace Platformer.Mechanics
         public Sprite[] idleAnimation, collectedAnimation;
 
         public TextMeshProUGUI scoreText;
+        public Slider pointsSlider;
 
         internal Sprite[] sprites = new Sprite[0];
 
@@ -63,6 +65,7 @@ namespace Platformer.Mechanics
             ev.player = player;
 
             scoreText.text = (Int32.Parse(scoreText.text) + 100).ToString();
+            pointsSlider.value = Int32.Parse(scoreText.text);
         }
     }
 }
