@@ -21,6 +21,7 @@ namespace Platformer.Gameplay
         {
             model.player.controlEnabled = false;
             model.player.GetComponentInChildren<ParticleSystem>().Play();
+            model.timer.isDone = true;
         }
     }
 }
