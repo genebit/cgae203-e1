@@ -14,9 +14,10 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            //enemy._collider.enabled = false;
+            // Change the layer to let player/enemy collide w/o issue
             enemy.gameObject.layer = LayerMask.NameToLayer("Dead Enemy");
             enemy.control.enabled = false;
+
             if (enemy._audio && enemy.ouch)
                 enemy._audio.PlayOneShot(enemy.ouch);
 
