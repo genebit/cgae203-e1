@@ -111,14 +111,14 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 0}
   jumpParticle: {fileID: 0}
-  jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
-  landedAudio: {fileID: 8300000, guid: dd6057fd464f77942a0bf39c54651b32, type: 3}
-  respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
-  ouchAudio: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
   maxSpeed: 4
   jumpTakeOffSpeed: 8
   jumpState: 0
   controlEnabled: 1
+  jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
+  landedAudio: {fileID: 8300000, guid: dd6057fd464f77942a0bf39c54651b32, type: 3}
+  respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
+  ouchAudio: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
 --- !u!114 &6082575806313374961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   healthText: {fileID: 0}
+  healthSlider: {fileID: 0}
   deathParticleSystem: {fileID: 0}
 --- !u!95 &95391780594314510
 Animator:
@@ -144,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 1208144871472054}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b09e60546065cf9448b36ebb7f759a91, type: 2}
+  m_Controller: {fileID: 9100000, guid: b87e0a75680b33e43847ce27967e5bc4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

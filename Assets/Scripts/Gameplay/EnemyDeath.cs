@@ -14,7 +14,8 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            enemy._collider.enabled = false;
+            //enemy._collider.enabled = false;
+            enemy.tag = "Untagged";
             enemy.control.enabled = false;
             if (enemy._audio && enemy.ouch)
                 enemy._audio.PlayOneShot(enemy.ouch);

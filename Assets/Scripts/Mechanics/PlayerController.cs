@@ -17,13 +17,9 @@ namespace Platformer.Mechanics
         public GameObject windBreathPrefab;
         public Transform firePoint;
 
-        public ParticleSystem jumpParticle;
+        public RaycastHit2D hit;
 
-        [Header("Audio Clips")]
-        public AudioClip jumpAudio;
-        public AudioClip landedAudio;
-        public AudioClip respawnAudio;
-        public AudioClip ouchAudio;
+        public ParticleSystem jumpParticle;
 
         [Header("Speed")]
         [Range(1, 10f)]
@@ -34,8 +30,14 @@ namespace Platformer.Mechanics
         [Header("Controls")]
         public JumpState jumpState = JumpState.Grounded;
         public bool controlEnabled = true;
-        #endregion
 
+        [Header("Audio Clips")]
+        public AudioClip jumpAudio;
+        public AudioClip landedAudio;
+        public AudioClip respawnAudio;
+        public AudioClip ouchAudio;
+        #endregion
+        
         private bool stopJump;
         internal BoxCollider2D collider2d;
         internal AudioSource audioSource;
@@ -44,7 +46,7 @@ namespace Platformer.Mechanics
         
         bool jump;
         Vector2 move;
-        SpriteRenderer spriteRenderer;
+        internal SpriteRenderer spriteRenderer;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
