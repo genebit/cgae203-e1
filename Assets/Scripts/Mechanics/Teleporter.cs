@@ -26,16 +26,16 @@ public class Teleporter : MonoBehaviour
         switch (direction)
         {
             case OffsetDirection.Left:
-                teleportOffset.x = Vector2.left.x;
+                teleportOffset.x = -Vector2.left.x;
                 break;
             case OffsetDirection.Right:
-                teleportOffset.x = Vector2.right.x;
+                teleportOffset.x = -Vector2.right.x;
                 break;
             case OffsetDirection.Top:
-                teleportOffset.x = Vector2.up.y;
+                teleportOffset.y = -Vector2.up.y;
                 break;
             case OffsetDirection.Bottom:
-                teleportOffset.x = Vector2.down.y;
+                teleportOffset.y = -Vector2.down.y;
                 break;
         }
     }
