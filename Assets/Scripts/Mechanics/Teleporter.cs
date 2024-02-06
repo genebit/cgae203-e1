@@ -7,22 +7,16 @@ public class Teleporter : MonoBehaviour
 
     [Range(0, 5f)]
     public float cooldownTime = 2f;
-
-    private Vector3 teleportOffset = new Vector3(0f, 0f, 0);
-
-    private bool isOnCooldown = false;
-    public enum OffsetDirection
-    {
-        Left,
-        Right,
-        Top,
-        Bottom
-    }
-
+    
+    [Tooltip("This is the direction where the player will be pushed out.")]
     public OffsetDirection direction;
+
+    private Vector3 teleportOffset;
+    private bool isOnCooldown = false;
 
     void Start()
     {
+        teleportOffset = new Vector3(0f, 0f, 0);
         switch (direction)
         {
             case OffsetDirection.Left:
@@ -50,11 +44,24 @@ public class Teleporter : MonoBehaviour
 
     private IEnumerator TeleportPlayer(Transform player)
     {
-        isOnCooldown = true; // Start cooldown
-        player.position = destination.position + teleportOffset; // Move player with offset
+        // Start cooldown
+        isOnCooldown = true;
+
+        // Move player with offset
+        player.position = destination.position + teleportOffset; 
 
         // Wait for cooldown at this gate
         yield return new WaitForSeconds(cooldownTime);
-        isOnCooldown = false; // End cooldown   
+
+        // End cooldown
+        isOnCooldown = false; 
+    }
+
+    public enum OffsetDirection
+    {
+        Left,
+        Right,
+        Top,
+        Bottom
     }
 }
