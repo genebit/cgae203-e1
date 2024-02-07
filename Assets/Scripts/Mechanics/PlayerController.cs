@@ -6,6 +6,7 @@ using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
 using System.Diagnostics;
+using TMPro;
 
 namespace Platformer.Mechanics
 {
@@ -15,6 +16,10 @@ namespace Platformer.Mechanics
         [Header("Skills")]
         public GameObject bulletPrefab;
         public GameObject windBreathPrefab;
+        [Header("Ultimate Skill")]
+        public GameObject dadPrefab;
+        public TextMeshProUGUI ultTextCallout;
+        public ParticleSystem ultSpeedLineParticle;
         public Transform firePoint;
 
         public RaycastHit2D hit;
@@ -28,6 +33,7 @@ namespace Platformer.Mechanics
         public float jumpTakeOffSpeed = 7;
 
         [Header("Controls")]
+        public bool isFacingRight;
         public JumpState jumpState = JumpState.Grounded;
         public bool controlEnabled = true;
 
@@ -81,6 +87,7 @@ namespace Platformer.Mechanics
 
             UpdateJumpState();
             base.Update();
+            isFacingRight = spriteRenderer.flipX == false;
 
             Schedule<PlayerSkill>().player = this;
         }

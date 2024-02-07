@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TutorialRequirement
   - Enemy
+  - Dad
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Enemy
   - Dead Enemy
   - Penguin Dad
-  - 
+  - Penguin Dad Platforms
   - 
   - 
   - 
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dad
+    uniqueID: 980539771
+    locked: 0
+  - name: Player
+    uniqueID: 896200875
     locked: 0
