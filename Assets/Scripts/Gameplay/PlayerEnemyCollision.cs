@@ -1,6 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using Platformer.UI;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -48,7 +49,7 @@ namespace Platformer.Gameplay
             {
                 player.health.Decrement();
                 player.animator.SetTrigger("hurt");
-                model.virtualCamera.GetComponent<CameraShake>().TriggerShake();
+                model.virtualCamera.GetComponent<CameraZoom>().TriggerZoom();
             }
         }
     }

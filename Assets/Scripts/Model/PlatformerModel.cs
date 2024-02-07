@@ -1,4 +1,5 @@
 using Platformer.Mechanics;
+using Platformer.UI;
 using UnityEngine;
 
 namespace Platformer.Model
@@ -31,6 +32,11 @@ namespace Platformer.Model
         /// The timer system in the scene.
         /// </summary>
         public Timer timer;
+
+        /// <summary>
+        /// The Camera zooming in the scene.
+        /// </summary>
+        public CameraZoom cameraZoom;
 
         /// <summary>
         /// A global jump modifier applied to all initial jump velocities.
