@@ -49,6 +49,8 @@ namespace Platformer.Gameplay
             {
                 player.health.Decrement();
                 player.animator.SetTrigger("hurt");
+                model.virtualCamera.GetComponent<CameraZoom>().zoomedOrthoSize = 3f;
+                model.virtualCamera.GetComponent<CameraZoom>().transitionDuration = 0.1f;
                 model.virtualCamera.GetComponent<CameraZoom>().TriggerZoom();
             }
         }

@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class TextTypewriter : MonoBehaviour
 {
-    [Range(0.01f, 1f)]
+    [Range(0.01f, 0.1f)]
     public float typingSpeed = 0.05f;
     public string fullText;
     private string currentText = "";
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(TypeText());
+        GetComponent<TextMeshProUGUI>().text = "";
     }
 
     IEnumerator TypeText()
@@ -25,5 +26,4 @@ public class TextTypewriter : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
     }
-
 }

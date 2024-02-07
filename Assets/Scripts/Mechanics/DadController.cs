@@ -10,45 +10,44 @@ using TMPro;
 
 namespace Platformer.Mechanics
 {
-    public class DadController : KinematicObject
+    public class DadController : MonoBehaviour
     {
         #region Inspector View
         [Header("Speed")]
         [Range(1, 10f)]
-        public float maxSpeed = 7;
-
+        public float maxSpeed = 2;
         #endregion
 
         private PlayerController child;
-        Vector2 move;
-        internal BoxCollider2D collider2d;
-        internal SpriteRenderer spriteRenderer;
+        private ParticleSystem dustParticle;
+        private Rigidbody2D rb;
 
-        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-
-        void Awake()
+        private void Start()
         {
-            collider2d = GetComponent<BoxCollider2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            rb = GetComponent<Rigidbody2D>();
+            dustParticle = gameObject.GetComponentInChildren<ParticleSystem>();
             child = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+            gameObject.GetComponent<SpriteRenderer>().flipX = child.spriteRenderer.flipX;
+            child.controlEnabled = false;
         }
 
-        protected override void Start()
+        private void Update()
         {
-            move = child.isFacingRight ? Vector2.right : -Vector2.right;
-            spriteRenderer.flipX = child.spriteRenderer.flipX;
-        }
+            dustParticle.Play();
 
-        protected override void Update()
-        {
-            ComputeVelocity();
-            base.Update();
-        }
+            // Set initial velocity to move forward
+            rb.velocity = new Vector2((child.isFacingRight) ? maxSpeed : -maxSpeed, 0);
 
-        protected override void ComputeVelocity()
-        {
-            // Set velocity to move the character continuously forward
-            targetVelocity = move * maxSpeed;
+            if (!GetComponent<Renderer>().isVisible)
+            {
+                child.controlEnabled = true;
+
+                child.ultTextCallout.gameObject.SetActive(false);
+                child.ultSpeedLineParticle.gameObject.SetActive(false);
+
+                Destroy(gameObject);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -58,8 +57,6 @@ namespace Platformer.Mechanics
                 EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
                 Schedule<EnemyDeath>().enemy = enemy;
                 Destroy(collision.gameObject, 1f);
-
-                // Make the dad leave the scene by sliding away
             }
         }
     }

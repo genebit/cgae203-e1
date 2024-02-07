@@ -1,6 +1,7 @@
 using Platformer.Mechanics;
 using Platformer.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Platformer.Model
 {
@@ -37,6 +38,11 @@ namespace Platformer.Model
         /// The Camera zooming in the scene.
         /// </summary>
         public CameraZoom cameraZoom;
+
+        /// <summary>
+        /// The slider for the point system.
+        /// </summary>
+        public Slider pointsSlider;
 
         /// <summary>
         /// A global jump modifier applied to all initial jump velocities.
