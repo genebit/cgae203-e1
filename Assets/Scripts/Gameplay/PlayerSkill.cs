@@ -15,12 +15,6 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            if (model.points.value >= 100 && (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.J))) ShootBullet();
-
-            if (model.points.value >= 250 && Input.GetKeyDown(KeyCode.K)) ShootBullet();
-
-            if (model.points.value == 1000 && Input.GetKeyDown(KeyCode.L)) PerformUltimate();
-
             if (((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.J)) && model.points.value < 100) ||
                 (Input.GetKeyDown(KeyCode.K) && model.points.value < 250) ||
                 (Input.GetKeyDown(KeyCode.L) && model.points.value < 1000))
@@ -28,6 +22,13 @@ namespace Platformer.Gameplay
                 player.promptText.gameObject.SetActive(true);
                 coroutineManager.StartCoroutine(DisablePromptAfterDelay(3f));
             }
+            else
+            {
+                if (model.points.value >= 100 && (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.J))) ShootBullet();
+                if (model.points.value >= 250 && Input.GetKeyDown(KeyCode.K)) ShootBullet();
+                if (model.points.value == 1000 && Input.GetKeyDown(KeyCode.L)) PerformUltimate();
+            }
+
         }
 
         IEnumerator DisablePromptAfterDelay(float delay)
