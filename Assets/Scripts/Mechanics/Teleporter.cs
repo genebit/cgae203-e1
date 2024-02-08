@@ -26,10 +26,10 @@ public class Teleporter : MonoBehaviour
                 teleportOffset.x = -Vector2.right.x;
                 break;
             case OffsetDirection.Top:
-                teleportOffset.y = -Vector2.up.y;
+                teleportOffset.y = -Vector2.up.y + 0.45f;
                 break;
             case OffsetDirection.Bottom:
-                teleportOffset.y = -Vector2.down.y;
+                teleportOffset.y = -Vector2.down.y + 0.45f;
                 break;
         }
     }

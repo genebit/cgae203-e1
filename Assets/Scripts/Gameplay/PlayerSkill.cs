@@ -64,7 +64,7 @@ namespace Platformer.Gameplay
             float positionOffset = 5f;
             dadSpawnPosition.x += (player.isFacingRight) ? -positionOffset : positionOffset;
 
-            // Spawn papa at the widened edge of the screen
+            //  5. Spawn papa at the widened edge of the screen
             GameObject.Instantiate(player.dadPrefab, dadSpawnPosition, Quaternion.identity);
 
             CostPoints(1000);
