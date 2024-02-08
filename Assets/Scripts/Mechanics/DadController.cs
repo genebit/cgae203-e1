@@ -45,6 +45,7 @@ namespace Platformer.Mechanics
 
                 child.ultTextCallout.gameObject.SetActive(false);
                 child.ultSpeedLineParticle.gameObject.SetActive(false);
+                child.animator.SetBool("cry", false);
 
                 Destroy(gameObject);
             }

@@ -14,8 +14,10 @@ namespace Platformer.Mechanics
     {
         #region Inspector View
         [Header("Skills")]
+        public TextMeshProUGUI promptText;
         public GameObject bulletPrefab;
         public GameObject windBreathPrefab;
+
         [Header("Ultimate Skill")]
         public GameObject dadPrefab;
         public TextMeshProUGUI ultTextCallout;
