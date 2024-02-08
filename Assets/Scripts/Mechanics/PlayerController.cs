@@ -16,7 +16,6 @@ namespace Platformer.Mechanics
         [Header("Skills")]
         public TextMeshProUGUI promptText;
         public GameObject bulletPrefab;
-        public GameObject windBreathPrefab;
 
         [Header("Ultimate Skill")]
         public GameObject dadPrefab;

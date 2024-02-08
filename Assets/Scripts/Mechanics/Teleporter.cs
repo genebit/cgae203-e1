@@ -16,7 +16,7 @@ public class Teleporter : MonoBehaviour
 
     void Start()
     {
-        teleportOffset = new Vector3(0f, 0f, 0);
+        teleportOffset = Vector3.zero;
         switch (direction)
         {
             case OffsetDirection.Left:
@@ -47,15 +47,55 @@ public class Teleporter : MonoBehaviour
         // Start cooldown
         isOnCooldown = true;
 
-        // Move player with offset
-        player.position = destination.position + teleportOffset; 
+        // Store initial position and destination position
+        Vector3 initialPosition = player.position;
+        Vector3 targetPosition = destination.position + teleportOffset;
+
+        // Disable renderer to make the player invisible
+        Renderer playerRenderer = player.GetComponent<Renderer>();
+        if (playerRenderer != null)
+        {
+            playerRenderer.enabled = false;
+        }
+
+        // Disable box collider during teleportation
+        BoxCollider2D playerCollider = player.GetComponent<BoxCollider2D>();
+        playerCollider.isTrigger = true;
+
+        float elapsedTime = 0f;
+
+        // Duration of interpolation
+        float duration = 0.35f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Calculate interpolation ratio
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            // Interpolate position
+            player.position = Vector3.Lerp(initialPosition, targetPosition, t);
+
+            yield return null;
+        }
+
+        // Ensure player reaches the exact destination
+        player.position = targetPosition;
+
+        // Enable renderer back after teleportation
+        playerRenderer.enabled = true;
+
+        // Enable box collider back after teleportation
+        playerCollider.isTrigger = false;
 
         // Wait for cooldown at this gate
         yield return new WaitForSeconds(cooldownTime);
 
         // End cooldown
-        isOnCooldown = false; 
+        isOnCooldown = false;
     }
+
 
     public enum OffsetDirection
     {
