@@ -42,7 +42,7 @@ namespace Platformer.Model
         /// <summary>
         /// The slider for the point system.
         /// </summary>
-        public Slider pointsSlider;
+        public Slider points;
 
         /// <summary>
         /// A global jump modifier applied to all initial jump velocities.

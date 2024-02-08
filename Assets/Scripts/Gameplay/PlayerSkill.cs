@@ -13,20 +13,16 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.J)) ShootBullet();
-            if (Input.GetKeyDown(KeyCode.K)) ShootBullet();
-            
-            // NOTE(Gene): What if there's a gap. the ultimate should only be done if the distance has no gaps.
-            // NOTE(Gene): Add logic here that if there's enough points to do this.
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                PerformUltimate();
-            }
+            if (model.points.value == 100 && Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.J)) ShootBullet();
+            if (model.points.value == 250 && Input.GetKeyDown(KeyCode.K)) ShootBullet();
+            if (model.points.value == 1000 && Input.GetKeyDown(KeyCode.L)) PerformUltimate();
         }
+
+        void CostPoints(int points) => model.points.value -= points;
 
         void PerformUltimate()
         {
+            // NOTE(Gene): What if there's a gap. the ultimate should only be done if the distance has no gaps.
             //	1. Zoom in Camera
             model.cameraZoom.transitionDuration = 0.3f;
             model.cameraZoom.zoomedOrthoSize = 2f;
@@ -56,11 +52,6 @@ namespace Platformer.Gameplay
             player.animator.SetTrigger("attack");
 
             CostPoints(100);
-        }
-
-        void CostPoints(int points)
-        {
-            model.pointsSlider.value -= points;
         }
     }
 }
